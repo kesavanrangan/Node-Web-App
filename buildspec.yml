@@ -13,8 +13,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t 872089898249.dkr.ecr.us-east-2.amazonaws.com/node-web-app:latest .
-      - docker tag 872089898249.dkr.ecr.us-east-2.amazonaws.com/node-web-app:latest 872089898249.dkr.ecr.us-east-2.amazonaws.com/node-web-app:$IMAGE_TAG
+      - docker build -t node-web-app .
+      - docker tag node-web-app:latest 872089898249.dkr.ecr.us-east-2.amazonaws.com/node-web-app:latest
   post_build:
     commands:
       - echo Build completed on `date`
