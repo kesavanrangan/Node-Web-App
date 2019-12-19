@@ -29,6 +29,6 @@ phases:
 
 artifacts:
   files:
-    - imageDetail.json
+    - $CODEBUILD_SRC_DIR/imageDetail.json
 
   
