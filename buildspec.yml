@@ -16,7 +16,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building thei Docker image...
+      - apt install docker.io
+      - echo Building the Docker image...
       - docker build -t node-web-app .
       - docker tag node-web-app:latest 872089898249.dkr.ecr.us-east-2.amazonaws.com/node-web-app:latest
 
@@ -26,7 +27,7 @@ phases:
       - echo Pushing the Docker images...
       - docker push 872089898249.dkr.ecr.us-east-2.amazonaws.com/node-web-app:latest
       - docker push 872089898249.dkr.ecr.us-east-2.amazonaws.com/node-web-app:$IMAGE_TAG
-      
+
 artifacts:
   files:
     - imageDetail.json
