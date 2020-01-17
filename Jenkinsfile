@@ -18,11 +18,12 @@ node{
     stage('Deploy Docker Image')
     {
         def dockerRun = 'docker run -p 3000:3000 -d --name Web-Server kesavanrangan/node-pipeline:v${BUILD_NUMBER}'
+        def containerstop = "docker stop \$(docker ps | grep -w Web-Server | awk '{ print \$1 }')"
         def dockerstop = 'docker system prune -a -f'
         
         sshagent(['Prod_Server'])
         {
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.18.96 ${dockerstop}"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.18.96 /home/af_check/trigger.sh"
             sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.18.96 ${dockerRun}"
         }
     }
